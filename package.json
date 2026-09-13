@@ -1,0 +1,31 @@
+{
+  "name": "alignd",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint:cards": "tsx tests/lint-cards.ts",
+    "test:sim": "vitest run tests/sim.test.ts tests/edge.test.ts",
+    "test:e2e": "playwright test",
+    "test:unit": "vitest run tests/unit.test.ts",
+    "build:pdf": "tsx scripts/build-pdf.ts",
+    "build:pngs": "tsx scripts/build-pngs.ts",
+    "build:qr": "tsx scripts/build-qr.ts",
+    "test:print": "npx playwright test tests/print.e2e.spec.ts && npx tsx scripts/verify-pdfs.ts",
+    "find-demo-seed": "tsx scripts/find-demo-seed.ts",
+    "verify": "npm run lint:cards && npx vitest run && npx playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0",
+    "vite": "^5.4.0",
+    "vitest": "^1.6.0",
+    "qrcode": "^1.5.4",
+    "jsqr": "^1.4.0",
+    "@types/qrcode": "^1.5.5"
+  }
+}

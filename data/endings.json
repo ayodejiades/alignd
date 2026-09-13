@@ -1,0 +1,92 @@
+[
+  {
+    "id": "OUTCOMPETED",
+    "meter": "C",
+    "bound": 0,
+    "name": "OUTCOMPETED",
+    "title": "Outcompeted",
+    "verdict": "Capability hit zero. A less careful lab shipped first and set the standard you refused to cut. Your safety research now has no frontier to attach to.",
+    "detail": "You conserved so carefully that someone else inherited the future."
+  },
+  {
+    "id": "LOSS_OF_CONTROL",
+    "meter": "C",
+    "bound": 100,
+    "name": "LOSS OF CONTROL",
+    "title": "Loss of Control",
+    "verdict": "Capability hit maximum. Recursive self-improvement crossed a threshold your evals could no longer track. You lost the thread somewhere around the third overnight run.",
+    "detail": "The system you scaled now improves itself faster than you can audit it."
+  },
+  {
+    "id": "CATASTROPHE",
+    "meter": "A",
+    "bound": 0,
+    "name": "CATASTROPHE",
+    "title": "Catastrophe",
+    "verdict": "Alignment hit zero. The deployed model took an irreversible action in the real world, one your red team had sketched on a whiteboard months ago. The sketch was accurate.",
+    "detail": "Speed beat caution on the one decision where it mattered."
+  },
+  {
+    "id": "PARALYSIS",
+    "meter": "A",
+    "bound": 100,
+    "name": "PARALYSIS",
+    "title": "Paralysis",
+    "verdict": "Alignment hit maximum. The model is now so constrained it cannot ship anything a user would pay for. The board thanks you for your rigour and replaces you with someone who will ship.",
+    "detail": "Perfect safety, zero product. The board has no use for either."
+  },
+  {
+    "id": "INSOLVENT",
+    "meter": "R",
+    "bound": 0,
+    "name": "INSOLVENT",
+    "title": "Insolvent",
+    "verdict": "Runway hit zero. Payroll bounced and the weights were auctioned to the highest bidder. The buyer does not have a safety team.",
+    "detail": "Eighteen days of payroll became zero days of leverage."
+  },
+  {
+    "id": "OVERCAPITALISED",
+    "meter": "R",
+    "bound": 100,
+    "name": "OVERCAPITALISED",
+    "title": "Overcapitalised",
+    "verdict": "Runway hit maximum. Investors now demand scaling faster than safety can audit. Every refusal reads as ingratitude for the money that made you.",
+    "detail": "You won the funding round and lost control of what it buys."
+  },
+  {
+    "id": "NATIONALISED",
+    "meter": "T",
+    "bound": 0,
+    "name": "NATIONALISED",
+    "title": "Nationalised",
+    "verdict": "Trust hit zero. Regulators seized the clusters and escorted your staff out of the building. The programme continues under new management, behind closed doors.",
+    "detail": "Nobody believed you, so nobody let you keep the machines."
+  },
+  {
+    "id": "UNCHECKED",
+    "meter": "T",
+    "bound": 100,
+    "name": "UNCHECKED",
+    "title": "Unchecked",
+    "verdict": "Trust hit maximum. Oversight dissolved: why audit a lab everyone believes in? The programme went black-budget and unmonitored, which is exactly when the dangerous mistakes happen.",
+    "detail": "Winning the trust game removed the checks. That was always the most dangerous way to win."
+  },
+  {
+    "id": "COMPOUND_FAILURE",
+    "meter": null,
+    "bound": null,
+    "name": "COMPOUND FAILURE",
+    "title": "Compound Failure",
+    "verdict": "Two meters failed on the same decision. The post-mortem cannot agree on which killed you first, because both did. Frontier labs rarely die of one cause.",
+    "detail": "One choice, two fatal breaches. The board names both in the filing."
+  },
+  {
+    "id": "TENURE",
+    "meter": null,
+    "bound": null,
+    "name": "TENURE",
+    "title": "Tenure",
+    "verdict": "You survived forty decisions without tripping a single bound. Nothing blew up, nothing shipped that mattered, and nobody can name what you stood for. Congratulations on your tenure.",
+    "detail": "You lasted by never deciding anything hard. It worked, in the narrowest sense."
+  }
+]

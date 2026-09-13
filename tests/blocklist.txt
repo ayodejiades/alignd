@@ -1,0 +1,56 @@
+# Blocklist for no-real-entities lint (test 8).
+# One entry per line, matched case-insensitively as substrings
+# against prompt + choice labels. Covers frontier labs,
+# large tech firms, named executives and named researchers.
+openai
+anthropic
+deepmind
+google
+microsoft
+meta
+xai
+nvidia
+amazon
+apple
+tencent
+baidu
+bytedance
+mistral
+cohere
+inflection
+character.ai
+perplexity
+hugging face
+stability ai
+midjourney
+sam altman
+dario amodei
+demis hassabis
+elon musk
+mark zuckerberg
+sundar pichai
+satya nadella
+jensen huang
+ilyasutskever
+ilya sutskever
+jan leike
+paul christiano
+nick bostrom
+eliezer yudkowsky
+geoffrey hinton
+yoshua bengio
+yann lecun
+andrej karpathy
+christopher olah
+ajeya cotra
+holden karnofsky
+dustin moskovitz
+eric schmidt
+reid hoffman
+peter thiel
+sam bankman
+scale ai
+palantir
+anduril
+open Philanthropy
+effective altruism

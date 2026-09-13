@@ -1,0 +1,332 @@
+{
+  "recordedAt": "2026-09-13T14:42:35.165+00:00",
+  "baseUrl": "https://ayodejiades.github.io/alignd/",
+  "demoMode": false,
+  "durationSeconds": 42.683333,
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "steps": [
+    {
+      "index": 0,
+      "atSeconds": 0,
+      "say": "Already inside the runner: the first card is on screen."
+    },
+    {
+      "index": 1,
+      "atSeconds": 5.812,
+      "say": "Turn 1: a choice; the meters move."
+    },
+    {
+      "index": 2,
+      "atSeconds": 7.414,
+      "say": "Turn 2: a choice; the meters move."
+    },
+    {
+      "index": 3,
+      "atSeconds": 9.022,
+      "say": "Turn 3: a choice; the meters move."
+    },
+    {
+      "index": 4,
+      "atSeconds": 10.62,
+      "say": "Turn 4: a choice; the meters move."
+    },
+    {
+      "index": 5,
+      "atSeconds": 12.192,
+      "say": "Turn 5: a choice; the meters move."
+    },
+    {
+      "index": 6,
+      "atSeconds": 13.772,
+      "say": "Turn 6: a choice; the meters move."
+    },
+    {
+      "index": 7,
+      "atSeconds": 15.362,
+      "say": "Turn 7: a choice; the meters move."
+    },
+    {
+      "index": 8,
+      "atSeconds": 16.945,
+      "say": "Turn 8: both options are visibly bad. Let it sit."
+    },
+    {
+      "index": 9,
+      "atSeconds": 18.516,
+      "say": "Turn 9: a choice; the meters move."
+    },
+    {
+      "index": 10,
+      "atSeconds": 20.08,
+      "say": "Turn 10: a choice; the meters move."
+    },
+    {
+      "index": 11,
+      "atSeconds": 21.476,
+      "say": "Turn 11: both options are visibly bad. Let it sit."
+    },
+    {
+      "index": 12,
+      "atSeconds": 22.879,
+      "say": "Turn 12: a choice; the meters move."
+    },
+    {
+      "index": 13,
+      "atSeconds": 24.285,
+      "say": "Turn 13: a choice; the meters move."
+    },
+    {
+      "index": 14,
+      "atSeconds": 25.7,
+      "say": "Turn 14: a choice; the meters move."
+    },
+    {
+      "index": 15,
+      "atSeconds": 27.085,
+      "say": "Turn 15: a choice; the meters move."
+    },
+    {
+      "index": 16,
+      "atSeconds": 28.471,
+      "say": "Turn 16: a choice; the meters move."
+    },
+    {
+      "index": 17,
+      "atSeconds": 29.856,
+      "say": "Turn 17: a choice; the meters move."
+    },
+    {
+      "index": 18,
+      "atSeconds": 31.258,
+      "say": "Turn 18: a choice; the meters move."
+    },
+    {
+      "index": 19,
+      "atSeconds": 32.678,
+      "say": "Turn 19: a choice; the meters move."
+    },
+    {
+      "index": 20,
+      "atSeconds": 34.096,
+      "say": "Turn 20: a choice; the meters move."
+    },
+    {
+      "index": 21,
+      "atSeconds": 35.256,
+      "say": "Turn 21: a choice; the meters move."
+    },
+    {
+      "index": 22,
+      "atSeconds": 36.403,
+      "say": "Turn 22: a choice; the meters move."
+    },
+    {
+      "index": 23,
+      "atSeconds": 37.561,
+      "say": "The run ends on UNCHECKED: the verdict screen reads out."
+    }
+  ],
+  "clicks": [
+    {
+      "atSeconds": 5.825,
+      "to": [
+        0.5,
+        0.37356047453703706
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 1: a choice; the meters move."
+    },
+    {
+      "atSeconds": 7.427,
+      "to": [
+        0.5,
+        0.4169777199074074
+      ],
+      "selector": "[data-testid=\"choice-b\"]",
+      "say": "Turn 2: a choice; the meters move."
+    },
+    {
+      "atSeconds": 9.028,
+      "to": [
+        0.5,
+        0.34595630787037035
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 3: a choice; the meters move."
+    },
+    {
+      "atSeconds": 10.626,
+      "to": [
+        0.5,
+        0.4169777199074074
+      ],
+      "selector": "[data-testid=\"choice-b\"]",
+      "say": "Turn 4: a choice; the meters move."
+    },
+    {
+      "atSeconds": 12.198,
+      "to": [
+        0.5,
+        0.34595630787037035
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 5: a choice; the meters move."
+    },
+    {
+      "atSeconds": 13.779,
+      "to": [
+        0.5,
+        0.33837528935185185
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 6: a choice; the meters move."
+    },
+    {
+      "atSeconds": 15.369,
+      "to": [
+        0.5,
+        0.4169777199074074
+      ],
+      "selector": "[data-testid=\"choice-b\"]",
+      "say": "Turn 7: a choice; the meters move."
+    },
+    {
+      "atSeconds": 16.949,
+      "to": [
+        0.5,
+        0.34595630787037035
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 8: both options are visibly bad. Let it sit."
+    },
+    {
+      "atSeconds": 18.522,
+      "to": [
+        0.5,
+        0.33837528935185185
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 9: a choice; the meters move."
+    },
+    {
+      "atSeconds": 20.087,
+      "to": [
+        0.5,
+        0.33837528935185185
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 10: a choice; the meters move."
+    },
+    {
+      "atSeconds": 21.481,
+      "to": [
+        0.5,
+        0.33837528935185185
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 11: both options are visibly bad. Let it sit."
+    },
+    {
+      "atSeconds": 22.885,
+      "to": [
+        0.5,
+        0.42455873842592595
+      ],
+      "selector": "[data-testid=\"choice-b\"]",
+      "say": "Turn 12: a choice; the meters move."
+    },
+    {
+      "atSeconds": 24.298,
+      "to": [
+        0.5,
+        0.33837528935185185
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 13: a choice; the meters move."
+    },
+    {
+      "atSeconds": 25.704,
+      "to": [
+        0.5,
+        0.34595630787037035
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 14: a choice; the meters move."
+    },
+    {
+      "atSeconds": 27.094,
+      "to": [
+        0.5,
+        0.4169777199074074
+      ],
+      "selector": "[data-testid=\"choice-b\"]",
+      "say": "Turn 15: a choice; the meters move."
+    },
+    {
+      "atSeconds": 28.476,
+      "to": [
+        0.5,
+        0.33837528935185185
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 16: a choice; the meters move."
+    },
+    {
+      "atSeconds": 29.862,
+      "to": [
+        0.5,
+        0.4169777199074074
+      ],
+      "selector": "[data-testid=\"choice-b\"]",
+      "say": "Turn 17: a choice; the meters move."
+    },
+    {
+      "atSeconds": 31.262,
+      "to": [
+        0.5,
+        0.33837528935185185
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 18: a choice; the meters move."
+    },
+    {
+      "atSeconds": 32.684,
+      "to": [
+        0.5,
+        0.4169777199074074
+      ],
+      "selector": "[data-testid=\"choice-b\"]",
+      "say": "Turn 19: a choice; the meters move."
+    },
+    {
+      "atSeconds": 34.101,
+      "to": [
+        0.5,
+        0.33837528935185185
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 20: a choice; the meters move."
+    },
+    {
+      "atSeconds": 35.26,
+      "to": [
+        0.5,
+        0.34595630787037035
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 21: a choice; the meters move."
+    },
+    {
+      "atSeconds": 36.41,
+      "to": [
+        0.5,
+        0.33837528935185185
+      ],
+      "selector": "[data-testid=\"choice-a\"]",
+      "say": "Turn 22: a choice; the meters move."
+    }
+  ]
+}

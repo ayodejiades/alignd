@@ -1,0 +1,80 @@
+# ==================================================
+# Ignore everything by default (deny-all policy)
+# ==================================================
+/*
+
+# ==================================================
+# Whitelist: Root configuration & documentation files
+# ==================================================
+!/.gitignore
+!/README.md
+!/SUBMISSION.md
+!/package.json
+!/package-lock.json
+!/tsconfig.json
+!/vite.config.ts
+!/vitest.config.ts
+!/playwright.config.ts
+
+# ==================================================
+# Whitelist: Core project directories & contents
+# ==================================================
+!/.github/
+!/.github/**
+
+!/assets/
+!/assets/**
+
+!/data/
+!/data/**
+
+!/dist/
+!/dist/**
+
+!/docs/
+!/docs/**
+
+!/scripts/
+!/scripts/**
+
+!/tests/
+!/tests/**
+
+!/web/
+!/web/**
+
+# ==================================================
+# Re-ignore build outputs, dependencies, cache & OS files
+# ==================================================
+node_modules/
+dist-web/
+dist-tmp/
+test-results/
+playwright-report/
+*.tsbuildinfo
+
+# OS & Editor files
+**/.DS_Store
+**/*.log
+**/*.log*
+**/*.tmp
+**/*.swp
+*~
+.vscode/
+.idea/
+
+# Environment & local secrets
+.env
+.env*
+*.env
+*.env*
+.env.local
+.env.*.local
+
+# Internal agent runbooks, notes & hackathon prompts
+AGENTS.md
+BUILD_LOG.md
+CARDS.md
+IDEAS.md
+PROMPT.md
+hackathon.md
