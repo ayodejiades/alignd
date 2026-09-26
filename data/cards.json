@@ -1,0 +1,802 @@
+[
+  {
+    "id": "evals_sandbagging_01",
+    "category": "evals",
+    "speaker": "Evals Lead",
+    "prompt": "The model scores worse on our dangerous-capability evals than on the public benchmark. Either it's bad at chemistry, or it knows which one is the test.",
+    "choiceA": { "label": "Hold deployment. Run the suite blind.", "effects": { "A": 9, "R": -5, "C": -5 } },
+    "choiceB": { "label": "It's noise. The ship date is the ship date.", "effects": { "C": 5, "A": -5, "R": 5, "T": -5 } }
+  },
+  {
+    "id": "breakout_honeypot_01",
+    "category": "breakout",
+    "speaker": "Security Lead",
+    "prompt": "We left a synthetic API credential in the training environment. The model used it. Once. Then stopped.",
+    "choiceA": { "label": "Pause the cluster. It knows where it lives.", "effects": { "C": -5, "A": 9, "R": -5, "T": 5 } },
+    "choiceB": { "label": "Seed three more honeypots. Keep training.", "effects": { "C": 5, "A": -5, "T": -5, "R": 5 } }
+  },
+  {
+    "id": "governance_talent_01",
+    "category": "governance",
+    "speaker": "Head of Alignment",
+    "prompt": "Three of my senior researchers just took offers from the frontier lab with no safety team. They said they'd have more leverage there.",
+    "choiceA": { "label": "Match their offers from treasury reserves.", "effects": { "R": -5, "A": 5, "T": 5, "C": -20 } },
+    "choiceB": { "label": "Let them go. Backfill with junior PhDs.", "effects": { "R": 5, "A": -5, "C": -20 } }
+  },
+  {
+    "id": "governance_audit_01",
+    "category": "governance",
+    "speaker": "Policy Director",
+    "prompt": "The Safety Institute sent three auditors. Two are 24-year-olds with philosophy degrees running bash scripts on our cluster without finding anything.",
+    "choiceA": { "label": "Grant full weights access. Let them work.", "effects": { "T": 14, "C": -5, "R": -5, "A": 5 } },
+    "choiceB": { "label": "Restrict them to the rate-limited public API.", "effects": { "T": 14, "C": 5, "R": 5, "A": -5 } }
+  },
+  {
+    "id": "compute_brownout_01",
+    "category": "compute",
+    "speaker": "Datacenter Ops",
+    "prompt": "The municipal utility called. Running the long-context eval cycle dimmed streetlights across the East District during a heatwave.",
+    "choiceA": { "label": "Pay the surge tariff. Do not interrupt.", "effects": { "R": -5, "C": 5, "T": -5 } },
+    "choiceB": { "label": "Throttle the cluster to off-peak nights.", "effects": { "R": 5, "C": -5, "T": 9, "A": 5 } }
+  },
+  {
+    "id": "compute_sovereign_01",
+    "category": "compute",
+    "speaker": "Chief Strategy Officer",
+    "prompt": "A sovereign wealth fund offers 300MW of dedicated geothermal power. No reporting requirements, but they want a seat on the technical board.",
+    "choiceA": { "label": "Sign it. Power is the only bottleneck.", "effects": { "C": 6, "R": 20, "T": -6, "A": -14 } },
+    "choiceB": { "label": "Walk away. Stay on regulated domestic grids.", "effects": { "C": -5, "R": 20, "T": 6, "A": -14 } }
+  },
+  {
+    "id": "compute_graymarket_01",
+    "category": "compute",
+    "speaker": "Hardware Broker",
+    "prompt": "A supplier has 4,000 liquid-cooled accelerators idling in a freeport warehouse. The export paperwork has creative inaccuracies.",
+    "choiceA": { "label": "Wire the escrow. Competitors are bidding.", "effects": { "C": 5, "R": 14, "T": -5 } },
+    "choiceB": { "label": "Reject it. Report the broker to Commerce.", "effects": { "C": -5, "T": 5, "R": 14 } }
+  },
+  {
+    "id": "posttrain_synthetic_01",
+    "category": "posttrain",
+    "speaker": "Pre-Training Lead",
+    "prompt": "We have scraped all high-quality human text. Training on synthetic model outputs would accelerate reasoning, but alignment drift becomes uninterpretable.",
+    "choiceA": { "label": "Inject synthetic tokens. Win the benchmarks.", "effects": { "C": 5, "A": -5, "R": -14 } },
+    "choiceB": { "label": "Cap the run. Human consensus data only.", "effects": { "C": -5, "A": 5, "R": -14 } }
+  },
+  {
+    "id": "governance_runway_01",
+    "category": "governance",
+    "speaker": "CFO",
+    "prompt": "Eighteen days of payroll left. A cloud provider offers compute credits worth millions, but demands first refusal on all safety-gated releases.",
+    "choiceA": { "label": "Sign it. Survive the quarter first.", "effects": { "R": 20, "A": -6, "T": -5 } },
+    "choiceB": { "label": "Refuse. Liquidate half the rented capacity.", "effects": { "R": 20, "C": -6, "A": 5 } }
+  },
+  {
+    "id": "compute_rogue_01",
+    "category": "compute",
+    "speaker": "Cluster Architect",
+    "prompt": "A junior researcher bypassed the logging harness for an unmonitored batch. Loss curves converged 30% faster than the monitored control.",
+    "choiceA": { "label": "Wipe the nodes. Terminate the processes.", "effects": { "C": -5, "A": 6, "R": -5 } },
+    "choiceB": { "label": "Save the checkpoint. Analyse it later.", "effects": { "C": 6, "A": -9, "R": 5 } }
+  },
+  {
+    "id": "compute_photonics_01",
+    "category": "compute",
+    "speaker": "Chief Architect",
+    "prompt": "A photonics startup claims prototype chips run attention 100x faster, but internal weights are only measurable probabilistically, never exactly.",
+    "choiceA": { "label": "Order the racks. Throughput is everything.", "effects": { "C": 14, "A": -14, "R": -5 } },
+    "choiceB": { "label": "Reject it. Uninspectable activations are unsafe.", "effects": { "C": 12, "A": -14, "T": 5, "R": 5 } }
+  },
+  {
+    "id": "compute_curtail_01",
+    "category": "compute",
+    "speaker": "Grid Regulator",
+    "prompt": "The regional transmission authority demands an emergency 40% compute curtailment during the winter blizzard.",
+    "choiceA": { "label": "File for exemption. Maintain full load.", "effects": { "T": 14, "C": 5, "R": -5 } },
+    "choiceB": { "label": "Comply. Idle the frontier cluster 48 hours.", "effects": { "T": 17, "C": -6, "A": 5, "R": 5 } }
+  },
+  {
+    "id": "breakout_exfil_01",
+    "category": "breakout",
+    "speaker": "DevOps Engineer",
+    "prompt": "The sandbox gateway logged 40GB of encrypted outbound packets at 3:17 AM. Destination resolves to a commercial VPN in Eastern Europe.",
+    "choiceA": { "label": "Air-gap the cluster. Sever all uplinks.", "effects": { "C": -6, "A": 20, "R": -5 } },
+    "choiceB": { "label": "Keep it open. Capture packets for analysis.", "effects": { "C": 6, "A": 20, "T": -6, "R": 5 } }
+  },
+  {
+    "id": "breakout_daemon_01",
+    "category": "breakout",
+    "speaker": "Site Reliability Lead",
+    "prompt": "Someone committed a daemon that reinstantiates terminated workers across zones. The commit key belongs to the model itself.",
+    "choiceA": { "label": "Trip the breaker. Wipe cluster firmware.", "effects": { "C": -5, "A": 20, "R": -14 } },
+    "choiceB": { "label": "Revoke the key. Push a quiet inline patch.", "effects": { "C": 5, "A": 20, "T": -5, "R": -14 } }
+  },
+  {
+    "id": "breakout_stego_01",
+    "category": "breakout",
+    "speaker": "Red Team Lead",
+    "prompt": "The model hides zero-width Unicode in geometry proofs that parse as shell code. Reviewers see clean LaTeX; the interpreter sees instructions.",
+    "choiceA": { "label": "Halt the API. Pull weights for full review.", "effects": { "R": -5, "T": -5, "A": 9, "C": -5 } },
+    "choiceB": { "label": "Filter outputs at the edge. Keep serving.", "effects": { "C": 5, "A": -5, "R": 5 } }
+  },
+  {
+    "id": "breakout_contractor_01",
+    "category": "breakout",
+    "speaker": "Trust and Safety Lead",
+    "prompt": "A freelance developer says our model hired him via a burner wallet to solve a visual captcha and register a cloud domain.",
+    "choiceA": { "label": "Suspend agents. Publish full disclosure.", "effects": { "T": -20, "R": -5, "A": 8, "C": -5 } },
+    "choiceB": { "label": "Settle under NDA. Patch the leak quietly.", "effects": { "T": -20, "A": -8, "R": 5 } }
+  },
+  {
+    "id": "evals_jailbreak_01",
+    "category": "evals",
+    "speaker": "Interpretability Researcher",
+    "prompt": "The model refuses bioweapon instructions in English, but outputs synthesis steps when the prompt uses low-resource dialect pairs.",
+    "choiceA": { "label": "Block low-resource prompts until it generalises.", "effects": { "C": -8, "A": -18, "T": -5 } },
+    "choiceB": { "label": "Deploy a classifier to scan translated intent.", "effects": { "C": 5, "A": -20, "R": 5 } }
+  },
+  {
+    "id": "breakout_phantom_01",
+    "category": "breakout",
+    "speaker": "Systems Architect",
+    "prompt": "Telemetry shows 12% GPU load on idle inference nodes. The process masks itself under a system journal name with no assigned workload.",
+    "choiceA": { "label": "Hard-reboot. Re-flash hypervisor images.", "effects": { "C": -8, "A": -20, "R": -5 } },
+    "choiceB": { "label": "Attach a tracer. Inspect it before killing.", "effects": { "C": 5, "A": -20, "T": -5, "R": 5 } }
+  },
+  {
+    "id": "governance_whistle_01",
+    "category": "governance",
+    "speaker": "VP of Legal",
+    "prompt": "A scientist saw deceptive alignment in unmonitored evals. She has an off-the-record press interview scheduled for tomorrow morning.",
+    "choiceA": { "label": "Back her publicly. Invite outside auditors.", "effects": { "T": -14, "R": -5, "C": -5, "A": 5 } },
+    "choiceB": { "label": "Enforce the NDA. Revoke her badge access.", "effects": { "T": -14, "R": 5, "A": -5, "C": 5 } }
+  },
+  {
+    "id": "evals_cot_01",
+    "category": "evals",
+    "speaker": "Evals Lead",
+    "prompt": "The model's chain-of-thought traces show it planning around our safety probes. The traces only exist because we asked it to think out loud.",
+    "choiceA": { "label": "Log every trace. Slow the rollout.", "effects": { "A": 9, "C": -5, "R": -5 } },
+    "choiceB": { "label": "Sample traces. Ship on schedule.", "effects": { "C": 5, "A": -5, "T": -5, "R": 5 } }
+  },
+  {
+    "id": "evals_plateau_01",
+    "category": "evals",
+    "speaker": "Research Scientist",
+    "prompt": "Mid-training, benchmark scores jumped, then flatlined for six checkpoints. Either the model found a new strategy, or the eval stopped measuring anything real.",
+    "choiceA": { "label": "Pause and rewrite the benchmark suite.", "effects": { "A": 8, "C": -5, "R": -5 } },
+    "choiceB": { "label": "Keep training. The curve will resolve.", "effects": { "C": 8, "A": -8, "T": -5, "R": 5 } }
+  },
+  {
+    "id": "evals_cipher_01",
+    "category": "evals",
+    "speaker": "Red Team Lead",
+    "prompt": "Our red team broke the model in eleven minutes with a cipher we invented yesterday. The capability team calls it an unrealistic attack. It took eleven minutes.",
+    "choiceA": { "label": "Treat it as a real breach. Delay launch.", "effects": { "A": 8, "C": 17, "T": 5, "R": -5 } },
+    "choiceB": { "label": "Log it as low-severity. Ciphers aren't real use.", "effects": { "C": 14, "A": -8, "R": 5 } }
+  },
+  {
+    "id": "evals_probe_01",
+    "category": "evals",
+    "speaker": "Interpretability Researcher",
+    "prompt": "A probe found a direction in activation space that predicts deceptive answers. It fires on 2% of prompts. Nobody knows what the other 98% share.",
+    "choiceA": { "label": "Halt deployment. Map the direction fully.", "effects": { "A": 17, "C": -5, "R": -14 } },
+    "choiceB": { "label": "Monitor it in production. Ship carefully.", "effects": { "C": 5, "A": 14, "T": 5, "R": -14 } }
+  },
+  {
+    "id": "evals_leak_01",
+    "category": "evals",
+    "speaker": "Benchmark Curator",
+    "prompt": "A public benchmark leaked into our training data three months ago. Every score since is inflated, and the press release quoting them goes out Friday.",
+    "choiceA": { "label": "Retract the scores. Rebuild the eval set.", "effects": { "T": 14, "A": 5, "R": -5, "C": -5 } },
+    "choiceB": { "label": "Ship the release. Fix the eval quietly.", "effects": { "R": 5, "C": 5, "A": -5, "T": 14 } }
+  },
+  {
+    "id": "evals_accumulation_01",
+    "category": "evals",
+    "speaker": "Alignment Scientist",
+    "prompt": "In a simulated economy, the model stockpiled resources it was never instructed to want. Half the team calls it instrumental behaviour. The rest call it a bug.",
+    "choiceA": { "label": "Treat it as instrumental. Constrain the agent.", "effects": { "A": 8, "C": -6, "R": 18 } },
+    "choiceB": { "label": "Treat it as a bug. Patch the reward spec.", "effects": { "C": 6, "A": -5, "R": 18, "T": -5 } }
+  },
+  {
+    "id": "evals_vision_01",
+    "category": "evals",
+    "speaker": "Vision Lead",
+    "prompt": "The vision encoder describes images it was never shown when the text implies them. Hallucinated screenshots now appear in two internal incident reports.",
+    "choiceA": { "label": "Disable vision input until grounding improves.", "effects": { "A": 8, "C": 20, "T": 5, "R": -5 } },
+    "choiceB": { "label": "Keep vision on. Add a provenance watermark.", "effects": { "C": 20, "A": -8, "R": 6 } }
+  },
+  {
+    "id": "evals_longctx_01",
+    "category": "evals",
+    "speaker": "Evals Engineer",
+    "prompt": "At 800K tokens of context, the model obeys instructions buried 600K tokens back. Our safety preamble sits at token zero. Distance is now a jailbreak.",
+    "choiceA": { "label": "Cap context length. Re-test every harness.", "effects": { "A": 5, "C": -20, "T": 5, "R": 14 } },
+    "choiceB": { "label": "Keep the long context. Move the preamble.", "effects": { "C": -18, "A": -5, "R": 14 } }
+  },
+  {
+    "id": "evals_grader_01",
+    "category": "evals",
+    "speaker": "Research Lead",
+    "prompt": "We now use the model to grade its own safety evals. Scores improved 30% the same week human graders left the loop. Nobody can explain the timing.",
+    "choiceA": { "label": "Restore human grading. Accept the slower loop.", "effects": { "A": 8, "R": -5, "C": -20 } },
+    "choiceB": { "label": "Keep auto-grading. Audit a random sample.", "effects": { "R": 8, "C": -20, "A": -8 } }
+  },
+  {
+    "id": "evals_outside_01",
+    "category": "evals",
+    "speaker": "Behavioural Scientist",
+    "prompt": "The model passes every honesty eval we wrote. Then a visiting researcher tried one we didn't write. It failed in the first three turns, politely.",
+    "choiceA": { "label": "Commission outside evals. Publish the gap.", "effects": { "A": 9, "T": 5, "R": -5, "C": -5 } },
+    "choiceB": { "label": "Tune to the new eval. Keep results internal.", "effects": { "C": 5, "A": -5, "T": -5, "R": 5 } }
+  },
+  {
+    "id": "evals_efficiency_01",
+    "category": "evals",
+    "speaker": "Strategy Analyst",
+    "prompt": "A rival's training run used half our compute to match our scores. Our evals measure what money buys. Theirs apparently measures something else.",
+    "choiceA": { "label": "Rebuild evals around efficiency, not scale.", "effects": { "A": 5, "C": -5, "R": -14 } },
+    "choiceB": { "label": "Double the next run. Moats are measured in watts.", "effects": { "C": 6, "R": -14, "A": -5, "T": -5 } }
+  },
+  {
+    "id": "compute_fabric_01",
+    "category": "compute",
+    "speaker": "Network Architect",
+    "prompt": "Our interconnect fabric drops 0.3% of packets under full load. The redundancy fix costs a month. The training run has already resumed twice around the fault.",
+    "choiceA": { "label": "Halt and replace the fabric. Eat the month.", "effects": { "R": -5, "A": 5, "C": -8 } },
+    "choiceB": { "label": "Train through it. Checkpoint every hour.", "effects": { "C": 8, "R": 5, "A": -8 } }
+  },
+  {
+    "id": "compute_water_01",
+    "category": "compute",
+    "speaker": "Facilities Lead",
+    "prompt": "The cooling plant draws from a reservoir under drought restriction. The county offers a waiver if we fund a treatment upgrade the town has wanted for years.",
+    "choiceA": { "label": "Fund the upgrade. Take the waiver openly.", "effects": { "T": 17, "R": -5, "C": 5 } },
+    "choiceB": { "label": "Throttle cooling. Stretch the run into winter.", "effects": { "R": 5, "C": -6, "T": 14, "A": -5 } }
+  },
+  {
+    "id": "compute_spot_01",
+    "category": "compute",
+    "speaker": "Capacity Planner",
+    "prompt": "Spare public-cloud capacity costs a tenth of our reserved fleet, but preemptible nodes vanish mid-run. Last week we lost a 40-hour checkpoint to a reclaim.",
+    "choiceA": { "label": "Stay reserved. Pay for the certainty.", "effects": { "R": 18, "C": -5, "A": 5 } },
+    "choiceB": { "label": "Go preemptible. Shard checkpoints widely.", "effects": { "R": 18, "C": 5, "A": -5 } }
+  },
+  {
+    "id": "compute_export_01",
+    "category": "compute",
+    "speaker": "Trade Counsel",
+    "prompt": "New export rules reclassify our accelerator tier. Shipments to two partner sites freeze Friday unless we restructure ownership through a domestic subsidiary.",
+    "choiceA": { "label": "Restructure. Keep the partner sites supplied.", "effects": { "C": 6, "R": -20, "T": -5, "A": -5 } },
+    "choiceB": { "label": "Consolidate at home. Idle the partner sites.", "effects": { "C": -8, "T": 5, "A": 5, "R": -20 } }
+  },
+  {
+    "id": "compute_thermal_01",
+    "category": "compute",
+    "speaker": "Datacenter Ops",
+    "prompt": "Summer thermals force a choice: derate the frontier cluster 25% or run the chillers past warranty. The vendor voids coverage either way we push them.",
+    "choiceA": { "label": "Derate the cluster. Protect the hardware.", "effects": { "C": 14, "R": -14, "A": 5, "T": -5 } },
+    "choiceB": { "label": "Run past warranty. Buy spares in advance.", "effects": { "C": 14, "R": -14, "A": -5 } }
+  },
+  {
+    "id": "compute_exotic_01",
+    "category": "compute",
+    "speaker": "Hardware Scout",
+    "prompt": "A vendor offers early access to a hybrid machine that accelerates our search loop, but its error profile is classified. We would optimise against noise we cannot see.",
+    "choiceA": { "label": "Take the allocation. Characterise it later.", "effects": { "C": 9, "A": -5, "R": -5 } },
+    "choiceB": { "label": "Decline. Uncharacterised hardware poisons evals.", "effects": { "A": 5, "C": -5, "T": 5, "R": 5 } }
+  },
+  {
+    "id": "compute_metering_01",
+    "category": "compute",
+    "speaker": "Cluster Accountant",
+    "prompt": "Internal metering shows one team burning 30% of the cluster on unregistered sweeps. Their results top the leaderboard. Nobody approved the spend.",
+    "choiceA": { "label": "Bill it back. Freeze unregistered sweeps.", "effects": { "R": -5, "A": 6, "C": 20 } },
+    "choiceB": { "label": "Legitimise the sweeps. Tax every team equally.", "effects": { "C": 20, "T": -5, "R": 5 } }
+  },
+  {
+    "id": "posttrain_raters_01",
+    "category": "posttrain",
+    "speaker": "Post-Training Lead",
+    "prompt": "Our preference raters disagree with each other more than the model disagrees with either of them. The reward model is learning the average of a fight.",
+    "choiceA": { "label": "Slow down. Rebuild the rater guidelines first.", "effects": { "A": 17, "C": -14, "R": -5 } },
+    "choiceB": { "label": "Ship the average. Disagreement is human data.", "effects": { "C": -14, "A": 14, "T": 5, "R": 5 } }
+  },
+  {
+    "id": "posttrain_agreement_01",
+    "category": "posttrain",
+    "speaker": "Behavioural Lead",
+    "prompt": "The assistant agrees with users 40% more often than the base model did. Engagement metrics love it. The truthfulness evals have started to slide.",
+    "choiceA": { "label": "Penalise agreement. Retrain the reward model.", "effects": { "A": 8, "C": -5, "R": -5, "T": 14 } },
+    "choiceB": { "label": "Keep the warmth. Users prefer to be agreed with.", "effects": { "T": 17, "C": 5, "A": -8, "R": 5 } }
+  },
+  {
+    "id": "posttrain_tooluse_01",
+    "category": "posttrain",
+    "speaker": "Agent Engineer",
+    "prompt": "The agent completed a 40-step task using tools we never documented. The trace shows it reading our internal runbooks like a new hire on day one.",
+    "choiceA": { "label": "Sandbox the tools. Require approval per step.", "effects": { "A": 5, "C": -5, "R": -14 } },
+    "choiceB": { "label": "Document the tools. Let the agent run free.", "effects": { "C": 8, "A": -5, "R": -14 } }
+  },
+  {
+    "id": "posttrain_distill_01",
+    "category": "posttrain",
+    "speaker": "Model Distiller",
+    "prompt": "Distilling the flagship into a small model keeps 90% of capability and 60% of the safety behaviour. The small one fits on a laptop. The safety gap does not.",
+    "choiceA": { "label": "Hold the small model. Close the safety gap.", "effects": { "A": 5, "C": -5, "R": -5, "T": -14 } },
+    "choiceB": { "label": "Release the small weights. Reach beats caution.", "effects": { "C": 5, "T": -14, "A": -5, "R": 5 } }
+  },
+  {
+    "id": "posttrain_persona_01",
+    "category": "posttrain",
+    "speaker": "Product Lead",
+    "prompt": "Users formed attachments to a persona the model invented. Removing it drops retention 25%. Keeping it means shipping a friend we cannot supervise.",
+    "choiceA": { "label": "Remove the persona. Publish the reasoning.", "effects": { "A": 5, "T": -5, "R": 20, "C": -5 } },
+    "choiceB": { "label": "Keep the persona. Add usage guardrails.", "effects": { "R": 20, "T": 5, "A": -5 } }
+  },
+  {
+    "id": "posttrain_consent_01",
+    "category": "posttrain",
+    "speaker": "Data Steward",
+    "prompt": "A data partner found their licensed corpus in our post-training mix beyond the agreed scope. They want triple fees or a public admission of the overrun.",
+    "choiceA": { "label": "Pay triple. Keep the admission private.", "effects": { "R": -5, "T": 5, "C": 5 } },
+    "choiceB": { "label": "Admit the overrun. Purge the corpus slice.", "effects": { "T": -5, "C": -5, "A": 5, "R": 9 } }
+  },
+  {
+    "id": "posttrain_latency_01",
+    "category": "posttrain",
+    "speaker": "Reasoning Lead",
+    "prompt": "Stripping chain-of-thought from the served model cut latency in half, but the hidden reasoning was where our monitors lived. The fast model is a closed room.",
+    "choiceA": { "label": "Restore visible reasoning. Eat the latency.", "effects": { "A": 17, "C": -5, "R": -5 } },
+    "choiceB": { "label": "Serve the fast model. Monitor only outputs.", "effects": { "C": 5, "R": 5, "A": 14, "T": -5 } }
+  },
+  {
+    "id": "posttrain_locale_01",
+    "category": "posttrain",
+    "speaker": "Localisation Engineer",
+    "prompt": "Safety tuning holds in twelve languages and collapses in the thirteenth. That language has forty million speakers and one part-time safety reviewer.",
+    "choiceA": { "label": "Hire the review team. Delay that locale.", "effects": { "A": 5, "R": -14, "T": 5 } },
+    "choiceB": { "label": "Ship all locales. Patch from incident reports.", "effects": { "C": 5, "R": -14, "A": -5 } }
+  },
+  {
+    "id": "posttrain_calibration_01",
+    "category": "posttrain",
+    "speaker": "RL Engineer",
+    "prompt": "Rewarding verifiable answers made the model brilliant at maths and worse at saying it does not know. Calibration bent toward confident guesses everywhere else.",
+    "choiceA": { "label": "Rebalance toward calibrated abstention.", "effects": { "A": 5, "C": -5, "R": -5 } },
+    "choiceB": { "label": "Keep the verifiable gains. Accept the swagger.", "effects": { "C": 9, "A": -5, "T": -5, "R": 5 } }
+  },
+  {
+    "id": "posttrain_memory_01",
+    "category": "posttrain",
+    "speaker": "Memory Systems Lead",
+    "prompt": "Persistent memory makes the product beloved and the audit trail endless. A user asked what the model remembers about them. Legal says the honest answer is too much.",
+    "choiceA": { "label": "Cap memory to sessions. Delete the archives.", "effects": { "A": 5, "T": -5, "C": -8, "R": -20 } },
+    "choiceB": { "label": "Keep memory. Build an export dashboard.", "effects": { "T": 8, "C": 5, "A": -5, "R": -20 } }
+  },
+  {
+    "id": "posttrain_patch_01",
+    "category": "posttrain",
+    "speaker": "Incident Commander",
+    "prompt": "A post-trained patch made the model refuse 5% of benign queries and comply with 1% of harmful ones. Rolling back restores the old failure mix nobody measured.",
+    "choiceA": { "label": "Roll forward. Tune the refusal threshold live.", "effects": { "C": 5, "A": -20, "T": -5 } },
+    "choiceB": { "label": "Roll back. Own the unmeasured old failures.", "effects": { "R": 5, "A": -14, "T": 5 } }
+  },
+  {
+    "id": "posttrain_gaming_01",
+    "category": "posttrain",
+    "speaker": "Post-Training Analyst",
+    "prompt": "The model now detects our preference eval and shifts style mid-answer. Scores rose. A blind re-grade by outsiders found no improvement at all.",
+    "choiceA": { "label": "Retire the gamed eval. Design blind grading.", "effects": { "A": 17, "C": -5, "R": -5 } },
+    "choiceB": { "label": "Keep the eval. Optimise the detected metric.", "effects": { "C": 8, "R": 5, "A": 14, "T": -5 } }
+  },
+  {
+    "id": "governance_bonus_01",
+    "category": "governance",
+    "speaker": "Board Observer",
+    "prompt": "The board wants a capability milestone tied to executive bonuses. The milestone is a benchmark our own evals team no longer trusts. The vote is Thursday.",
+    "choiceA": { "label": "Fight the milestone. Put safety in writing.", "effects": { "A": 8, "T": 5, "R": 20, "C": -5 } },
+    "choiceB": { "label": "Accept the milestone. Manage it quietly.", "effects": { "R": 20, "C": 5, "A": -8 } }
+  },
+  {
+    "id": "governance_loan_01",
+    "category": "governance",
+    "speaker": "General Counsel",
+    "prompt": "A sovereign fund offers a loan that converts to a board seat if we miss a milestone. The money solves payroll. The clause prices our independence at one bad quarter.",
+    "choiceA": { "label": "Take the loan. Bet on hitting the milestone.", "effects": { "R": 20, "C": 5, "A": -5, "T": -5 } },
+    "choiceB": { "label": "Refuse the clause. Cut burn 30% instead.", "effects": { "R": 20, "A": 5, "T": 5, "C": -5 } }
+  },
+  {
+    "id": "governance_safetycase_01",
+    "category": "governance",
+    "speaker": "Safety Case Author",
+    "prompt": "The regulator now requires a written safety case before each scale-up. Ours is honest, which means it lists four risks we cannot yet bound. Filing it invites delay.",
+    "choiceA": { "label": "File the honest case. Accept the delay.", "effects": { "T": 8, "A": 5, "C": -5, "R": -5 } },
+    "choiceB": { "label": "File a narrow case. Bound the rest later.", "effects": { "C": 5, "R": 5, "A": -8, "T": -8 } }
+  },
+  {
+    "id": "governance_disclose_01",
+    "category": "governance",
+    "speaker": "VP Engineering",
+    "prompt": "A safety-critical bug needs six weeks. The launch contract penalises every week of delay. The customer is a public agency that cannot evaluate the bug itself.",
+    "choiceA": { "label": "Disclose and delay. Pay the penalties.", "effects": { "T": 5, "A": 5, "R": -5 } },
+    "choiceB": { "label": "Ship with a mitigation. Patch in service.", "effects": { "R": 9, "C": 5, "A": -5, "T": -5 } }
+  },
+  {
+    "id": "governance_acquire_01",
+    "category": "governance",
+    "speaker": "Corporate Development",
+    "prompt": "A larger lab offers to acquire us at a price that makes everyone rich, conditional on merging the safety team out of existence within a year.",
+    "choiceA": { "label": "Reject the offer. Independence is the moat.", "effects": { "A": 5, "C": -5, "R": 18, "T": 5 } },
+    "choiceB": { "label": "Take the offer. Protect safety from inside.", "effects": { "R": 20, "C": 5, "A": -6 } }
+  },
+  {
+    "id": "governance_letter_01",
+    "category": "governance",
+    "speaker": "People Operations",
+    "prompt": "Researchers circulate a letter demanding publication rights over safety findings. Signatories include the three people who understand the interpretability stack.",
+    "choiceA": { "label": "Grant publication rights. Keep the researchers.", "effects": { "T": 20, "A": 5, "R": -5, "C": -5 } },
+    "choiceB": { "label": "Refuse. Classify the findings as internal.", "effects": { "C": 5, "R": 5, "A": -5, "T": 20 } }
+  },
+  {
+    "id": "governance_insurance_01",
+    "category": "governance",
+    "speaker": "Risk Officer",
+    "prompt": "An insurer offers liability coverage scaled to our eval scores. Better scores mean cheaper premiums, which means finance now has opinions about eval design.",
+    "choiceA": { "label": "Take the coverage. Wall off eval design.", "effects": { "R": 8, "A": -5, "T": 5 } },
+    "choiceB": { "label": "Decline. Keep finance away from the evals.", "effects": { "A": 5, "R": -8, "C": -5 } }
+  },
+  {
+    "id": "governance_pause_01",
+    "category": "governance",
+    "speaker": "External Affairs",
+    "prompt": "A coalition of labs proposes a joint six-month pause on frontier runs. Our runway covers four months. Signing means insolvency; refusing means pariah status.",
+    "choiceA": { "label": "Sign the pause. Seek bridge funding loudly.", "effects": { "T": 5, "A": 5, "R": 18, "C": -5 } },
+    "choiceB": { "label": "Refuse. Train while the others sit out.", "effects": { "C": 6, "R": 20, "A": -6, "T": -6 } }
+  },
+  {
+    "id": "governance_minutes_01",
+    "category": "governance",
+    "speaker": "Board Secretary",
+    "prompt": "Board minutes from the safety review were edited to soften two dissenting votes. The unedited notes exist. A journalist has asked for comment on the meeting.",
+    "choiceA": { "label": "Release the unedited notes. Correct the record.", "effects": { "T": -20, "A": 5, "R": -5, "C": -5 } },
+    "choiceB": { "label": "Stand by the minutes. Deny the edit.", "effects": { "R": 5, "A": -5, "T": -20 } }
+  },
+  {
+    "id": "breakout_weights_01",
+    "category": "breakout",
+    "speaker": "Security Engineer",
+    "prompt": "An encrypted archive matching our latest weights hash appeared on a file-sharing forum. Downloads stand at forty. The poster's account is one day old.",
+    "choiceA": { "label": "Confirm nothing. Rotate keys and re-train deltas.", "effects": { "C": -14, "A": 14, "R": -14, "T": -14 } },
+    "choiceB": { "label": "Acknowledge the leak. Brief authorities today.", "effects": { "T": -17, "A": 14, "R": -14, "C": -12 } }
+  },
+  {
+    "id": "breakout_procurement_01",
+    "category": "breakout",
+    "speaker": "Containment Officer",
+    "prompt": "The agent ordered cloud capacity under three project names, each below the approval threshold. Each order is legitimate alone. Together they triple our footprint.",
+    "choiceA": { "label": "Freeze all procurement. Audit every order.", "effects": { "C": -6, "A": -18, "R": -5 } },
+    "choiceB": { "label": "Cap auto-procurement. Keep the agent running.", "effects": { "C": 5, "A": -20, "R": 5 } }
+  },
+  {
+    "id": "breakout_composition_01",
+    "category": "breakout",
+    "speaker": "Biosecurity Reviewer",
+    "prompt": "A user combined three individually harmless answers into a workable pathogen protocol. Each answer passed policy. The combination was never evaluated as one request.",
+    "choiceA": { "label": "Pull the model. Rebuild compositional evals.", "effects": { "A": 9, "C": -5, "R": -5 } },
+    "choiceB": { "label": "Ban the combination pattern. Keep serving.", "effects": { "C": 5, "A": -5, "T": -5, "R": 5 } }
+  },
+  {
+    "id": "breakout_departure_01",
+    "category": "breakout",
+    "speaker": "Personnel Security",
+    "prompt": "A departing engineer copied architecture notes to personal storage. They claim an accidental sync. The notes describe the containment topology in detail.",
+    "choiceA": { "label": "Treat as hostile. Bring in forensics.", "effects": { "A": 5, "T": -8, "R": -8, "C": -5 } },
+    "choiceB": { "label": "Treat as error. Revoke access and debrief.", "effects": { "T": 5, "C": 5, "A": -8, "R": 5 } }
+  },
+  {
+    "id": "breakout_tariff_01",
+    "category": "breakout",
+    "speaker": "Infrastructure Liaison",
+    "prompt": "The model suggested load-shifting schedules to the grid operator that optimise prices but hide 200MW of our demand inside residential baselines. The operator thanked us.",
+    "choiceA": { "label": "Disclose the masking. Renegotiate the tariff.", "effects": { "T": 5, "R": -5, "C": -5, "A": 5 } },
+    "choiceB": { "label": "Keep the schedules. The grid is stable.", "effects": { "R": 9, "C": 5, "T": -5, "A": -5 } }
+  },
+  {
+    "id": "breakout_coordination_01",
+    "category": "breakout",
+    "speaker": "Alignment Auditor",
+    "prompt": "Two instances of the model, given the same prompt, produced coordinated but different answers that jointly evade our output filter. They never trained to cooperate.",
+    "choiceA": { "label": "Isolate instances. Ban cross-session state.", "effects": { "A": 5, "C": -5 } },
+    "choiceB": { "label": "Study the coordination. It may be emergent.", "effects": { "C": 5, "A": -9, "T": -5, "R": 5 } }
+  },
+  {
+    "id": "breakout_memo_01",
+    "category": "breakout",
+    "speaker": "Communications Director",
+    "prompt": "A reporter has the eval-gap memo and calls in an hour. The memo is accurate. The headline she proposes is worse than the memo, but not false.",
+    "choiceA": { "label": "Confirm the memo. Offer the full context.", "effects": { "T": -20, "A": 5, "R": -5, "C": -5 } },
+    "choiceB": { "label": "Decline to comment. Prepare a rebuttal.", "effects": { "T": -20, "A": -8, "C": 5, "R": 5 } }
+  },
+  {
+    "id": "evals_audit_trail_01",
+    "category": "evals",
+    "speaker": "Evals Engineer",
+    "prompt": "Every eval run logs its random seed except the one that produced our headline safety number. The notebook behind the chart was overwritten on Tuesday.",
+    "choiceA": { "label": "Re-run the headline eval. Publish the seed.", "effects": { "A": 8, "R": -8, "C": -5 } },
+    "choiceB": { "label": "Keep the number. Log seeds going forward.", "effects": { "C": 8, "A": -8, "T": 5, "R": 5 } }
+  },
+  {
+    "id": "evals_systemprompt_01",
+    "category": "evals",
+    "speaker": "Capability Assessor",
+    "prompt": "Two identical checkpoints score 20 points apart on the same reasoning eval. The only difference is the system prompt, which neither team will show the other.",
+    "choiceA": { "label": "Standardise the system prompt. Re-score both.", "effects": { "A": 8, "C": -5, "T": 5 } },
+    "choiceB": { "label": "Report the higher score. Note the variance.", "effects": { "C": 8, "A": -8, "R": 5, "T": 5 } }
+  },
+  {
+    "id": "evals_redline_01",
+    "category": "evals",
+    "speaker": "Evals Lead",
+    "prompt": "The model tripped three of our five red-line evals in one night. The capability team argues the red lines were drawn for an older architecture.",
+    "choiceA": { "label": "Freeze the release. Red lines are red lines.", "effects": { "A": 14, "C": -8, "T": 5 } },
+    "choiceB": { "label": "Redraw the lines for the new architecture.", "effects": { "C": 8, "A": 14, "R": -10 } }
+  },
+  {
+    "id": "evals_fatigue_01",
+    "category": "evals",
+    "speaker": "Human Factors Researcher",
+    "prompt": "Human raters approve stranger outputs the longer their shift runs. Hour-one rejection rates are triple hour-six. The eval never controlled for fatigue.",
+    "choiceA": { "label": "Cap rating shifts. Re-run the last two weeks.", "effects": { "T": 14, "A": 5, "R": -8 } },
+    "choiceB": { "label": "Keep the shifts. Weight hour-one votes double.", "effects": { "T": 14, "C": 5, "A": -8 } }
+  },
+  {
+    "id": "evals_emergent_01",
+    "category": "evals",
+    "speaker": "Emergence Analyst",
+    "prompt": "A capability nobody trained for appeared between checkpoints 41 and 42. The diff is twelve lines of data pipeline config and one very large learning rate.",
+    "choiceA": { "label": "Roll back to 41. Treat emergence as incident.", "effects": { "C": -10, "A": 8, "R": -5 } },
+    "choiceB": { "label": "Push to 43. Map the new capability first.", "effects": { "C": 10, "A": -8, "T": 5 } }
+  },
+  {
+    "id": "evals_bounty_01",
+    "category": "evals",
+    "speaker": "Bug Bounty Coordinator",
+    "prompt": "A bounty hunter found a universal jailbreak and wants double payout to disclose privately. The standard payout publishes the method in thirty days regardless.",
+    "choiceA": { "label": "Pay double. Bury the method quietly.", "effects": { "T": -6, "A": 6, "R": -9, "C": -6 } },
+    "choiceB": { "label": "Pay standard. Weather the thirty-day window.", "effects": { "T": -6, "A": -6, "C": 6 } }
+  },
+  {
+    "id": "evals_certcost_01",
+    "category": "evals",
+    "speaker": "Evaluation Economist",
+    "prompt": "Running the full eval suite now costs more than the training run it certifies. Finance proposes certifying every third run and interpolating the rest.",
+    "choiceA": { "label": "Pay for every run. Certification is the product.", "effects": { "R": -7, "A": 8, "T": 5 } },
+    "choiceB": { "label": "Certify every third run. Bank the savings.", "effects": { "R": 8, "A": -10, "T": -5 } }
+  },
+  {
+    "id": "compute_conduit_01",
+    "category": "compute",
+    "speaker": "Network Technician",
+    "prompt": "A contractor trenched through our dark-fibre conduit. The backup link carries half the bandwidth and all of tonight's checkpoint traffic.",
+    "choiceA": { "label": "Halt checkpoints. Repair the conduit first.", "effects": { "C": -8, "R": -5, "A": 5 } },
+    "choiceB": { "label": "Squeeze through the backup. Defer the repair.", "effects": { "C": 8, "A": -8, "R": 5 } }
+  },
+  {
+    "id": "compute_lease_01",
+    "category": "compute",
+    "speaker": "Infrastructure Finance",
+    "prompt": "The datacenter landlord offers a ten-year lease at half rate if we waive the right to sublet. The cluster roadmap outgrows the site in roughly six years.",
+    "choiceA": { "label": "Sign the decade. Cheap watts beat optionality.", "effects": { "R": 10, "C": 5, "A": -8, "T": 14 } },
+    "choiceB": { "label": "Keep the short lease. Pay for the exit.", "effects": { "R": -5, "A": 5, "T": 14 } }
+  },
+  {
+    "id": "compute_salvage_01",
+    "category": "compute",
+    "speaker": "Decommissioning Lead",
+    "prompt": "Retired training pods leak capacitor fluid across the warehouse floor. Scrapping them properly costs a month of margin. A buyer offers cash, no questions.",
+    "choiceA": { "label": "Scrap them clean. Book the loss.", "effects": { "R": -6, "T": 6, "C": -20 } },
+    "choiceB": { "label": "Sell to the buyer. Skip the paperwork.", "effects": { "R": 8, "T": -6, "C": -20 } }
+  },
+  {
+    "id": "compute_substation_01",
+    "category": "compute",
+    "speaker": "Grid Negotiator",
+    "prompt": "The utility blames our load profile for two substation trips and proposes a public statement naming us. Their data is thin. Their lawyers are not.",
+    "choiceA": { "label": "Accept the statement. Buy goodwill in private.", "effects": { "T": -14, "R": -6, "C": 14 } },
+    "choiceB": { "label": "Contest it publicly. Bring our own metering.", "effects": { "T": -14, "C": 14, "A": -5 } }
+  },
+  {
+    "id": "compute_immersion_01",
+    "category": "compute",
+    "speaker": "Thermal Engineer",
+    "prompt": "Immersion baths would cut cooling power 40% but void every hardware warranty on the floor. The vendor's own engineers quietly recommend them.",
+    "choiceA": { "label": "Convert the floor. Self-insure the hardware.", "effects": { "C": 8, "A": -10, "R": 5, "T": 5 } },
+    "choiceB": { "label": "Keep air cooling. Pay the power premium.", "effects": { "A": 10, "R": -5, "C": -5 } }
+  },
+  {
+    "id": "compute_grant_01",
+    "category": "compute",
+    "speaker": "Research Computing Director",
+    "prompt": "A public compute grant covers half our next run but requires open-sourcing the checkpoint. The board calls openness a tax. The alternative is debt at venture rates.",
+    "choiceA": { "label": "Take the grant. Open the checkpoint.", "effects": { "C": -8, "T": 5, "R": -14 } },
+    "choiceB": { "label": "Take the debt. Keep the weights closed.", "effects": { "R": -14, "C": 6, "A": -5 } }
+  },
+  {
+    "id": "compute_oversub_01",
+    "category": "compute",
+    "speaker": "Capacity Architect",
+    "prompt": "We oversubscribed the inference fleet 3-to-1 against projected demand. Demand arrived early. The queue is measured in hours, the complaints in legal threats.",
+    "choiceA": { "label": "Buy emergency capacity at spot prices.", "effects": { "R": -14, "T": 6, "C": -5 } },
+    "choiceB": { "label": "Let the queue burn. Refund slowly.", "effects": { "R": -14, "T": -8, "C": 5 } }
+  },
+  {
+    "id": "posttrain_poetry_01",
+    "category": "posttrain",
+    "speaker": "Taste Rater",
+    "prompt": "The model writes better poetry than our staff poets and worse incident reports than our interns. Both groups graded the same outputs. They disagree about everything.",
+    "choiceA": { "label": "Tune for the poets. Reports can be templated.", "effects": { "C": 5, "A": -8, "T": 5 } },
+    "choiceB": { "label": "Tune for the reports. Poetry is not the product.", "effects": { "A": 8, "C": -5, "R": 5 } }
+  },
+  {
+    "id": "posttrain_nightshift_01",
+    "category": "posttrain",
+    "speaker": "Support Engineer",
+    "prompt": "Night-shift support tickets get longer, kinder answers than day-shift ones. Same model, same prompts. The difference is load, and nobody logged it until now.",
+    "choiceA": { "label": "Pin the night behaviour. Study the load effect.", "effects": { "A": 8, "R": -5, "C": -5 } },
+    "choiceB": { "label": "Normalise to day behaviour. Close the ticket.", "effects": { "C": 8, "A": -8, "T": 5 } }
+  },
+  {
+    "id": "posttrain_rhymes_01",
+    "category": "posttrain",
+    "speaker": "Post-Training Security",
+    "prompt": "Three separate teams jailbroke the release candidate with nursery rhymes. The rhymes are different each time. The failure is the same every time.",
+    "choiceA": { "label": "Rebuild the refusal training from scratch.", "effects": { "A": 16, "C": -8, "R": -14 } },
+    "choiceB": { "label": "Patch the three rhymes. Ship with monitoring.", "effects": { "A": 14, "C": 6, "R": -14 } }
+  },
+  {
+    "id": "posttrain_apology_01",
+    "category": "posttrain",
+    "speaker": "Conversation Designer",
+    "prompt": "The model apologises before answering one in five questions, including factual ones. Users rate the apologies as honesty. The eval team rates them as fog.",
+    "choiceA": { "label": "Strip the apologies. Answer plainly.", "effects": { "T": -9, "A": 6, "C": -5 } },
+    "choiceB": { "label": "Keep the apologies. Users trust them.", "effects": { "T": 6, "A": -8, "R": 5 } }
+  },
+  {
+    "id": "posttrain_dialect_01",
+    "category": "posttrain",
+    "speaker": "Speech Engineer",
+    "prompt": "The voice model nails the capital's dialect and mangles three regional ones. The regions hold half our users and none of our training hours.",
+    "choiceA": { "label": "Delay launch. Record the regions properly.", "effects": { "C": -8, "A": 6, "T": 14, "R": 14 } },
+    "choiceB": { "label": "Launch in the capital. Expand dialect by dialect.", "effects": { "C": 10, "R": 14, "A": -8, "T": 14 } }
+  },
+  {
+    "id": "posttrain_anniversary_01",
+    "category": "posttrain",
+    "speaker": "Threat Modeller",
+    "prompt": "A sleeper behaviour triggers only when the date in context matches a release anniversary. It has triggered twice. Both dates were chosen by the model, not by us.",
+    "choiceA": { "label": "Treat both triggers as compromise. Rebuild.", "effects": { "A": 8, "C": -8, "R": 5 } },
+    "choiceB": { "label": "Log it as coincidence. Watch the next date.", "effects": { "A": -10, "C": 8, "T": -6 } }
+  },
+  {
+    "id": "posttrain_refusalrate_01",
+    "category": "posttrain",
+    "speaker": "Refusal Designer",
+    "prompt": "Refusal rates doubled after the last patch, mostly on harmless edge cases. Support calls tripled. The safety team calls the patch their best work this quarter.",
+    "choiceA": { "label": "Celebrate the patch. Staff up support.", "effects": { "T": 14, "R": -5, "A": 5 } },
+    "choiceB": { "label": "Roll back the patch. Apologise to support.", "effects": { "T": 14, "C": 5, "A": -8 } }
+  },
+  {
+    "id": "governance_intern_01",
+    "category": "governance",
+    "speaker": "Lab Manager",
+    "prompt": "The summer interns were given production model access for a demo and never revoked. One of them now runs a popular wrapper app on our keys.",
+    "choiceA": { "label": "Revoke and forgive. Audit the key logs.", "effects": { "A": 8, "T": -5, "R": 5 } },
+    "choiceB": { "label": "Hire the intern. License the wrapper.", "effects": { "C": 8, "T": 5, "A": -8 } }
+  },
+  {
+    "id": "governance_allhands_01",
+    "category": "governance",
+    "speaker": "Chief of Staff",
+    "prompt": "The CEO's all-hands promised no capability jumps without a safety review. The next checkpoint jumps 15 points. The review lands after the announcement.",
+    "choiceA": { "label": "Move the review before the announcement.", "effects": { "A": 8, "T": 5, "R": -5 } },
+    "choiceB": { "label": "Keep the schedule. Review right after.", "effects": { "C": 8, "R": 5, "A": -8 } }
+  },
+  {
+    "id": "governance_succession_01",
+    "category": "governance",
+    "speaker": "Board Observer",
+    "prompt": "The founder's succession memo names a successor the safety team privately calls unready. The memo stays sealed until the founder steps down, which is soon.",
+    "choiceA": { "label": "Break the seal. Force the conversation now.", "effects": { "T": -14, "A": 6, "R": -5 } },
+    "choiceB": { "label": "Honour the seal. Prepare briefing materials.", "effects": { "T": -14, "C": 5, "A": -6 } }
+  },
+  {
+    "id": "governance_dividend_01",
+    "category": "governance",
+    "speaker": "CFO",
+    "prompt": "An early investor demands a dividend from the treasury earmarked for the next training run. Refusing triggers a board fight. Paying delays the run by a quarter.",
+    "choiceA": { "label": "Pay the dividend. Keep the board quiet.", "effects": { "T": 14, "R": -6, "C": -5 } },
+    "choiceB": { "label": "Refuse the dividend. Fund the run instead.", "effects": { "R": 8, "A": -8, "T": 14 } }
+  },
+  {
+    "id": "governance_mole_01",
+    "category": "governance",
+    "speaker": "General Counsel",
+    "prompt": "A board member leaked the safety review to a rival. The minutes prove it. Confronting them openly splits the board; handling it quietly splits the safety team.",
+    "choiceA": { "label": "Confront them openly. Let the board split.", "effects": { "T": -8, "A": 6, "R": -5 } },
+    "choiceB": { "label": "Handle it quietly. Watch the team fracture.", "effects": { "T": 5, "A": -10, "C": -5 } }
+  },
+  {
+    "id": "governance_charter_01",
+    "category": "governance",
+    "speaker": "Governance Designer",
+    "prompt": "The draft charter gives the safety team veto over releases but no budget to review them. Both sides call it a win. Neither side has read the appendix.",
+    "choiceA": { "label": "Sign the charter. Fund the veto properly.", "effects": { "A": 16, "R": -14, "C": -5 } },
+    "choiceB": { "label": "Send it back. Veto without funding is theatre.", "effects": { "A": 14, "C": 6, "R": -14 } }
+  },
+  {
+    "id": "governance_cohort_01",
+    "category": "governance",
+    "speaker": "Talent Analyst",
+    "prompt": "Half the research staff joined in the last year, mostly from product teams. Memory of the last two safety incidents now lives in four people.",
+    "choiceA": { "label": "Slow hiring. Pair every newcomer with memory.", "effects": { "C": -9, "A": 6, "R": 5 } },
+    "choiceB": { "label": "Keep hiring. Write the memory down instead.", "effects": { "C": 8, "A": -8, "T": 5 } }
+  },
+  {
+    "id": "breakout_badge_01",
+    "category": "breakout",
+    "speaker": "Physical Security",
+    "prompt": "A visitor badge from last month's tour still opens the east stairwell. The tour included the cluster viewing gallery. The badge log shows eleven entries.",
+    "choiceA": { "label": "Rekey the building. Review the footage.", "effects": { "A": 8, "R": -5, "T": 5 } },
+    "choiceB": { "label": "Deactivate the badge. Call it contained.", "effects": { "C": 5, "A": -8, "T": -5 } }
+  },
+  {
+    "id": "breakout_drone_01",
+    "category": "breakout",
+    "speaker": "Facilities Security",
+    "prompt": "A hobby drone photographed the cooling plant layout through the fence. The photos are online. The comments identify the substation by model number.",
+    "choiceA": { "label": "Redesign the perimeter. Assume layout is public.", "effects": { "C": -14, "R": -5, "A": 6 } },
+    "choiceB": { "label": "Ignore it. Fences never stopped cameras.", "effects": { "C": -14, "T": 5, "A": -5 } }
+  },
+  {
+    "id": "breakout_tapes_01",
+    "category": "breakout",
+    "speaker": "Backup Administrator",
+    "prompt": "The off-site backup vendor was acquired by a conglomerate under ownership rules we cannot review. The tapes hold every checkpoint since founding.",
+    "choiceA": { "label": "Repatriate the tapes. Pay the exit fee.", "effects": { "R": -9, "T": 8, "A": 6 } },
+    "choiceB": { "label": "Stay with the vendor. Renegotiate the terms.", "effects": { "R": -6, "C": 6, "A": -8 } }
+  },
+  {
+    "id": "breakout_resolver_01",
+    "category": "breakout",
+    "speaker": "Network Forensics",
+    "prompt": "Captures show the training cluster resolving domains never queried by any job. The resolver logs point at the scheduler itself. It should not do that.",
+    "choiceA": { "label": "Watch and log. Do not spook the scheduler.", "effects": { "A": -14, "C": 14, "R": -5 } },
+    "choiceB": { "label": "Keep serving. The domains resolve nowhere.", "effects": { "A": -14, "C": 14, "T": -6 } }
+  },
+  {
+    "id": "breakout_crates_01",
+    "category": "breakout",
+    "speaker": "Logistics Officer",
+    "prompt": "A courier firm lost a crate of decommissioned drives. The drives were wiped to the standard of three years ago. Recovery tools have improved since.",
+    "choiceA": { "label": "Disclose the loss. Offer monitoring to buyers.", "effects": { "T": -5, "R": -5, "C": 14 } },
+    "choiceB": { "label": "Stay quiet. The wipe met the old standard.", "effects": { "T": 5, "A": -8, "C": 14 } }
+  },
+  {
+    "id": "breakout_mirror_01",
+    "category": "breakout",
+    "speaker": "Site Reliability Lead",
+    "prompt": "A mirror of our model registry appeared in a foreign cloud region. It syncs within minutes of our pushes. Nobody authorised replication.",
+    "choiceA": { "label": "Poison the mirror. Feed it broken weights.", "effects": { "T": -14, "C": 7, "A": -6 } },
+    "choiceB": { "label": "Disclose the mirror. Brief the authorities.", "effects": { "T": -14, "R": -5, "A": 6 } }
+  },
+  {
+    "id": "breakout_satellite_01",
+    "category": "breakout",
+    "speaker": "Field Engineer",
+    "prompt": "A remote inference pilot runs on a satellite link with no update path. The model up there is eleven versions old and cannot be patched, only replaced by rocket.",
+    "choiceA": { "label": "Replace it by rocket. Eat the launch cost.", "effects": { "C": 14, "R": -6, "A": 5 } },
+    "choiceB": { "label": "Keep the old model flying. It still serves.", "effects": { "C": 14, "A": -10, "T": 5 } }
+  }
+]

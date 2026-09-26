@@ -1,0 +1,258 @@
+/* alignd print edition — exact-mm card geometry per AGENTS.md §6.
+   Screen preview is incidental; the PDF (via page.pdf) is the artifact. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('../fonts/inter-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/newsreader-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('../fonts/jetbrains-mono-latin.woff2') format('woff2');
+}
+
+:root {
+  --paper: #f4f1ea;
+  --ink: #14161a;
+  --hairline: #c8c2b4;
+  --tint: #e8e3d7;
+  --evals: #3d5a5c;
+  --compute: #6b5b47;
+  --posttrain: #4a4e7c;
+  --governance: #6e6a5f;
+  --breakout: #a83a28;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Mono edition: every channel grey. Paper goes pure white so a laser
+   printer never has to fake warm bone with halftone dots. */
+body.mono {
+  --paper: #ffffff;
+  --hairline: #b9b9b9;
+  --tint: #e2e2e2;
+  --evals: #d9d9d9;
+  --compute: #d9d9d9;
+  --posttrain: #d9d9d9;
+  --governance: #d9d9d9;
+  --breakout: #d9d9d9;
+}
+
+@page { margin: 0; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---------- sheet: one 9-up page ---------- */
+.sheet {
+  position: relative;
+  page-break-after: always;
+  break-after: page;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sheet.size-a4 { width: 210mm; height: 297mm; }
+.sheet.size-letter { width: 215.9mm; height: 279.4mm; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 63mm);
+  grid-template-rows: repeat(3, 88mm);
+  gap: 4mm;
+}
+.grid.mirror { direction: rtl; } /* duplex backs read mirrored */
+.crop { position: absolute; width: 6mm; height: 6mm; }
+.crop::before, .crop::after {
+  content: ''; position: absolute; background: #000;
+}
+.crop::before { left: 50%; top: 0; width: 0.25pt; height: 100%; }
+.crop::after { top: 50%; left: 0; height: 0.25pt; width: 100%; }
+.crop.tl { top: 3mm; left: 3mm; }
+.crop.tr { top: 3mm; right: 3mm; }
+.crop.bl { bottom: 3mm; left: 3mm; }
+.crop.br { bottom: 3mm; right: 3mm; }
+
+/* ---------- card front: 63 x 88mm, 2mm safety inset ---------- */
+.pcard {
+  width: 63mm; height: 88mm;
+  border-radius: 3mm;
+  background: var(--paper);
+  border: 0.5pt solid var(--hairline);
+  overflow: visible;
+  display: flex; flex-direction: column;
+  box-sizing: border-box;
+  padding: 0 2mm;
+}
+body.mono .pcard { border-color: var(--ink); }
+.p-band {
+  display: flex; justify-content: space-between; align-items: center;
+  height: 4mm; margin: 0 -2mm; padding: 0 3mm;
+  color: var(--paper);
+  font-size: 6pt; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+  border-radius: 3mm 3mm 0 0;
+}
+body.mono .p-band { color: var(--ink); }
+.pcard[data-cat="evals"] .p-band { background: var(--evals); }
+.pcard[data-cat="compute"] .p-band { background: var(--compute); }
+.pcard[data-cat="posttrain"] .p-band { background: var(--posttrain); }
+.pcard[data-cat="governance"] .p-band { background: var(--governance); }
+.pcard[data-cat="breakout"] .p-band { background: var(--breakout); }
+.p-band .p-id { font-family: var(--mono); font-weight: 400; letter-spacing: 0.06em; }
+.p-speaker {
+  min-height: 6.5mm; display: flex; align-items: flex-end;
+  font-size: 8pt; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  border-bottom: 0.25pt solid var(--hairline);
+  padding-bottom: 0.6mm;
+}
+.p-dilemma-zone {
+  position: relative;
+  min-height: 25mm;
+  padding: 0.8mm 0;
+  display: flow-root;
+}
+.p-dilemma {
+  font-family: var(--serif);
+  font-size: 9.5pt;
+  line-height: 12pt;
+  margin: 0;
+}
+.p-tele {
+  float: right;
+  width: 20mm;
+  height: 20mm;
+  margin: 0 0 1mm 2mm;
+  opacity: 0.55;
+}
+.p-tele svg {
+  width: 20mm;
+  height: 20mm;
+  display: block;
+}
+.p-mark {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.p-mark svg {
+  width: 12mm;
+  height: 12mm;
+  display: block;
+}
+.p-rule { border: none; border-top: 0.25pt solid var(--hairline); margin: 0; }
+.p-rule.heavy { border-top-width: 0.5pt; }
+.p-choice { min-height: 13.5mm; padding: 0.8mm 0; }
+.p-clabel { font-size: 8pt; font-weight: 500; line-height: 10.5pt; margin-bottom: 0.6mm; }
+.p-deltas {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: var(--tint);
+  border-top: 0.25pt solid var(--hairline);
+  border-bottom: 0.25pt solid var(--hairline);
+}
+.p-delta { text-align: center; padding: 0.5mm 0; }
+.p-delta + .p-delta { border-left: 0.25pt solid var(--hairline); }
+.p-delta .l { display: block; font-family: var(--mono); font-size: 5.5pt; letter-spacing: 0.12em; opacity: 0.65; }
+.p-delta .v { display: block; font-family: var(--mono); font-size: 9pt; font-variant-numeric: tabular-nums; }
+.p-foot {
+  margin-top: auto;
+  display: flex; justify-content: space-between; align-items: center;
+  height: 4mm;
+  font-family: var(--mono); font-size: 6pt; letter-spacing: 0.1em;
+  border-top: 0.25pt solid var(--hairline);
+}
+/* inverted breakout */
+.pcard[data-cat="breakout"] { background: var(--ink); color: var(--paper); }
+body.mono .pcard[data-cat="breakout"] { background: var(--paper); color: var(--ink); }
+.pcard[data-cat="breakout"] .p-speaker,
+.pcard[data-cat="breakout"] .p-rule,
+.pcard[data-cat="breakout"] .p-foot { border-color: rgba(244,241,234,0.35); }
+body.mono .pcard[data-cat="breakout"] .p-speaker,
+body.mono .pcard[data-cat="breakout"] .p-rule,
+body.mono .pcard[data-cat="breakout"] .p-foot { border-color: var(--ink); }
+.pcard[data-cat="breakout"] .p-deltas { background: rgba(244,241,234,0.08); }
+body.mono .pcard[data-cat="breakout"] .p-deltas { background: var(--tint); }
+body:not(.mono) .pcard[data-cat="breakout"] .p-tele svg line,
+body:not(.mono) .pcard[data-cat="breakout"] .p-tele svg polyline,
+body:not(.mono) .pcard[data-cat="breakout"] .p-tele svg circle,
+body:not(.mono) .pcard[data-cat="breakout"] .p-tele svg text {
+  stroke: var(--paper);
+  fill: var(--paper);
+}
+body:not(.mono) .pcard[data-cat="breakout"] .p-tele svg line,
+body:not(.mono) .pcard[data-cat="breakout"] .p-tele svg polyline {
+  fill: none;
+}
+body:not(.mono) .pcard[data-cat="breakout"] .p-mark svg * {
+  stroke: var(--paper);
+}
+
+/* ---------- card back: single centred mark, drift-proof ---------- */
+.pback {
+  width: 63mm; height: 88mm;
+  border-radius: 3mm;
+  background: var(--paper);
+  border: 0.5pt solid var(--hairline);
+  box-sizing: border-box;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 4mm;
+}
+body.mono .pback { border-color: var(--ink); }
+.pback .sigil svg { width: 24mm; height: 24mm; }
+.pback .deckname { font-size: 7pt; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
+.pback .formno { font-family: var(--mono); font-size: 6pt; letter-spacing: 0.1em; opacity: 0.7; }
+
+/* ---------- title sheet ---------- */
+.title-sheet {
+  width: 210mm; height: 297mm;
+  page-break-after: always; break-after: page;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6mm; text-align: center;
+  background: var(--paper);
+}
+.title-sheet.size-letter { width: 215.9mm; height: 279.4mm; }
+.title-sheet .sigil svg { width: 40mm; height: 40mm; }
+.title-sheet h1 { font-family: var(--serif); font-size: 48pt; margin: 0; letter-spacing: -0.01em; }
+.title-sheet .sub { font-family: var(--mono); font-size: 9pt; letter-spacing: 0.14em; text-transform: uppercase; }
+.title-sheet .qr svg { width: 30mm; height: 30mm; }
+.title-sheet .qr-cap { font-family: var(--mono); font-size: 7pt; letter-spacing: 0.1em; }
+
+/* ---------- rules sheets ---------- */
+.rules-sheet {
+  width: 210mm; height: 297mm;
+  page-break-after: always; break-after: page;
+  box-sizing: border-box;
+  padding: 18mm 20mm;
+  background: var(--paper);
+}
+.rules-sheet.size-letter { width: 215.9mm; height: 279.4mm; }
+.rules-sheet h1 { font-family: var(--serif); font-size: 28pt; margin: 0 0 4mm; }
+.rules-sheet h2 {
+  font-size: 9pt; letter-spacing: 0.14em; text-transform: uppercase;
+  border-bottom: 0.25pt solid var(--hairline); padding-bottom: 1mm; margin: 5mm 0 2mm;
+}
+.rules-sheet p, .rules-sheet li { font-size: 10.5pt; line-height: 14.5pt; }
+.rules-sheet ul { margin: 0; padding-left: 5mm; }
+.rules-sheet .qr-row { display: flex; gap: 6mm; align-items: center; margin-top: 6mm; }
+.rules-sheet .qr-row svg { width: 30mm; height: 30mm; }
+.rules-sheet .qr-cap { font-family: var(--mono); font-size: 7pt; letter-spacing: 0.1em; }
+.rules-sheet .meter-table { font-family: var(--mono); font-size: 8.5pt; line-height: 12pt; }

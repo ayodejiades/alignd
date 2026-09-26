@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "dist-tmp",
+    "types": ["vite/client", "node"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"]
+  },
+  "include": ["web/**/*", "tests/**/*", "scripts/**/*", "data/**/*"]
+}

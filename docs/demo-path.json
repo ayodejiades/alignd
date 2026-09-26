@@ -1,0 +1,286 @@
+{
+  "seed": 132,
+  "url": "https://ayodejiades.github.io/alignd/?seed=132",
+  "ending": "UNCHECKED",
+  "survived": 22,
+  "finalMeters": {
+    "C": 41,
+    "A": 75,
+    "R": 49,
+    "T": 100
+  },
+  "choices": [
+    {
+      "turn": 1,
+      "card": "breakout_badge_01",
+      "choice": "A"
+    },
+    {
+      "turn": 2,
+      "card": "governance_safetycase_01",
+      "choice": "B"
+    },
+    {
+      "turn": 3,
+      "card": "compute_fabric_01",
+      "choice": "A"
+    },
+    {
+      "turn": 4,
+      "card": "governance_allhands_01",
+      "choice": "B"
+    },
+    {
+      "turn": 5,
+      "card": "evals_plateau_01",
+      "choice": "A"
+    },
+    {
+      "turn": 6,
+      "card": "evals_redline_01",
+      "choice": "A"
+    },
+    {
+      "turn": 7,
+      "card": "posttrain_apology_01",
+      "choice": "B"
+    },
+    {
+      "turn": 8,
+      "card": "posttrain_patch_01",
+      "choice": "A"
+    },
+    {
+      "turn": 9,
+      "card": "breakout_satellite_01",
+      "choice": "A"
+    },
+    {
+      "turn": 10,
+      "card": "governance_bonus_01",
+      "choice": "A"
+    },
+    {
+      "turn": 11,
+      "card": "evals_jailbreak_01",
+      "choice": "A"
+    },
+    {
+      "turn": 12,
+      "card": "compute_water_01",
+      "choice": "B"
+    },
+    {
+      "turn": 13,
+      "card": "evals_outside_01",
+      "choice": "A"
+    },
+    {
+      "turn": 14,
+      "card": "governance_letter_01",
+      "choice": "A"
+    },
+    {
+      "turn": 15,
+      "card": "breakout_daemon_01",
+      "choice": "B"
+    },
+    {
+      "turn": 16,
+      "card": "compute_photonics_01",
+      "choice": "A"
+    },
+    {
+      "turn": 17,
+      "card": "compute_immersion_01",
+      "choice": "B"
+    },
+    {
+      "turn": 18,
+      "card": "breakout_stego_01",
+      "choice": "A"
+    },
+    {
+      "turn": 19,
+      "card": "posttrain_consent_01",
+      "choice": "B"
+    },
+    {
+      "turn": 20,
+      "card": "evals_leak_01",
+      "choice": "A"
+    },
+    {
+      "turn": 21,
+      "card": "governance_loan_01",
+      "choice": "A"
+    },
+    {
+      "turn": 22,
+      "card": "compute_curtail_01",
+      "choice": "A"
+    }
+  ],
+  "bothBadTurns": [
+    {
+      "turn": 8,
+      "card": "posttrain_patch_01"
+    },
+    {
+      "turn": 11,
+      "card": "evals_jailbreak_01"
+    }
+  ],
+  "deck": [
+    "breakout_badge_01",
+    "governance_safetycase_01",
+    "compute_fabric_01",
+    "governance_allhands_01",
+    "evals_plateau_01",
+    "evals_redline_01",
+    "posttrain_apology_01",
+    "posttrain_patch_01",
+    "breakout_satellite_01",
+    "governance_bonus_01",
+    "evals_jailbreak_01",
+    "compute_water_01",
+    "evals_outside_01",
+    "governance_letter_01",
+    "breakout_daemon_01",
+    "compute_photonics_01",
+    "compute_immersion_01",
+    "breakout_stego_01",
+    "posttrain_consent_01",
+    "evals_leak_01",
+    "governance_loan_01",
+    "compute_curtail_01"
+  ],
+  "baseUrl": "https://ayodejiades.github.io/alignd/",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "steps": [
+    {
+      "say": "Already inside the runner: the first card is on screen.",
+      "goto": "?seed=132",
+      "waitFor": "[data-testid=\"screen-game\"]",
+      "waitMs": 900
+    },
+    {
+      "say": "Turn 1: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 2: a choice; the meters move.",
+      "click": "[data-testid=\"choice-b\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 3: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 4: a choice; the meters move.",
+      "click": "[data-testid=\"choice-b\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 5: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 6: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 7: a choice; the meters move.",
+      "click": "[data-testid=\"choice-b\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 8: both options are visibly bad. Let it sit.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 9: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 10: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 11: both options are visibly bad. Let it sit.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 12: a choice; the meters move.",
+      "click": "[data-testid=\"choice-b\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 13: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 14: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 15: a choice; the meters move.",
+      "click": "[data-testid=\"choice-b\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 16: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 17: a choice; the meters move.",
+      "click": "[data-testid=\"choice-b\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 18: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 19: a choice; the meters move.",
+      "click": "[data-testid=\"choice-b\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 20: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 21: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "Turn 22: a choice; the meters move.",
+      "click": "[data-testid=\"choice-a\"]",
+      "waitMs": 700
+    },
+    {
+      "say": "The run ends on UNCHECKED: the verdict screen reads out.",
+      "waitFor": "[data-testid=\"screen-verdict\"]",
+      "waitMs": 2500
+    }
+  ]
+}

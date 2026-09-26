@@ -1,0 +1,269 @@
+/* alignd — visual system per spec §6. Bone paper, ink, hairline, tint.
+   Category accents only in band + code. No green/red delta encoding. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('../fonts/inter-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/newsreader-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('../fonts/jetbrains-mono-latin.woff2') format('woff2');
+}
+
+:root {
+  --paper: #f4f1ea;
+  --ink: #14161a;
+  --hairline: #c8c2b4;
+  --tint: #e8e3d7;
+  --evals: #3d5a5c;
+  --compute: #6b5b47;
+  --posttrain: #4a4e7c;
+  --governance: #6e6a5f;
+  --breakout: #a83a28;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+#app {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 12px 14px 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+button { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+/* Lift the ring off solid buttons so focus reads as a halo, not a second border. */
+.btn:focus-visible { outline-offset: 3px; }
+
+/* ---------- title ---------- */
+.title-wrap { margin: auto 0; text-align: left; padding: 24px 4px; }
+.kicker {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink); opacity: 0.72;
+}
+.wordmark { font-family: var(--serif); font-size: 64px; line-height: 1; margin: 8px 0 4px; letter-spacing: -0.01em; }
+.how { margin: 0 0 20px; }
+.how-line { font-size: 15px; line-height: 1.5; max-width: 40ch; margin: 0 0 2px; }
+.btn {
+  display: inline-block; border: 1px solid var(--ink); background: var(--ink);
+  color: var(--paper); font-size: 14px; font-weight: 600; letter-spacing: 0.04em;
+  padding: 12px 20px; border-radius: 6px; cursor: pointer; text-decoration: none;
+}
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.sub-links { display: flex; gap: 18px; align-items: center; margin-top: 14px; }
+.small-link { font-size: 13px; color: var(--ink); background: none; border: none; padding: 4px 2px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.played-note { margin-top: 18px; font-family: var(--mono); font-size: 12px; opacity: 0.7; }
+
+/* ---------- meters ---------- */
+.meters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 6px 0 12px; }
+.meter { text-align: center; position: relative; }
+.meter .m-letter {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  background: none; border: none; padding: 2px 6px; cursor: help; color: inherit;
+  text-decoration: underline dotted; text-underline-offset: 3px;
+}
+.meter .m-tip {
+  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  z-index: 5; white-space: nowrap; font-family: var(--mono); font-size: 11px;
+  background: var(--ink); color: var(--paper); padding: 6px 10px; border-radius: 4px;
+}
+/* Keep edge tooltips inside the viewport. */
+.meter:first-child .m-tip { left: 0; transform: none; }
+.meter:last-child .m-tip { left: auto; right: 0; transform: none; }
+/* No transitions anywhere here: tooltips are motion-safe by construction. */
+.meter:hover .m-tip, .meter:focus-within .m-tip { display: block; }
+.meter .m-bar {
+  position: relative; height: 68px; margin: 6px auto; width: 28px;
+  background: var(--tint); border: 1px solid var(--hairline); border-radius: 3px; overflow: hidden;
+}
+.meter .m-fill { position: absolute; bottom: 0; left: 0; right: 0; background: var(--ink); transition: height 400ms ease; }
+.meter .m-band { position: absolute; left: 0; right: 0; height: 15%;
+  background: repeating-linear-gradient(45deg, transparent 0 2px, rgba(20,22,26,0.28) 2px 3px); }
+.meter .m-band.lo { bottom: 0; border-top: 1px solid var(--hairline); }
+.meter .m-band.hi { top: 0; border-bottom: 1px solid var(--hairline); }
+.meter .m-tick { position: absolute; left: 0; right: 0; height: 1px; background: var(--hairline); }
+.meter .m-val { font-family: var(--mono); font-size: 11px; font-variant-numeric: tabular-nums; }
+.counter { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-align: center; opacity: 0.7; margin-bottom: 8px; }
+.counter-link, .hint-link {
+  background: none; border: none; padding: 0;
+  font: inherit; color: inherit; cursor: pointer;
+  text-decoration: underline dotted; text-underline-offset: 3px;
+}
+.counter-link:hover, .hint-link:hover,
+.counter-link:focus-visible, .hint-link:focus-visible {
+  text-decoration: underline solid;
+}
+.hint {
+  font-family: var(--mono); font-size: 12px; text-align: center;
+  border: 1px dashed var(--hairline); border-radius: 4px;
+  padding: 8px 12px; margin-bottom: 10px; opacity: 0.85;
+}
+
+/* ---------- page footer ---------- */
+.page-footer {
+  margin-top: 36px; padding-top: 12px;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--mono); font-size: 11px; line-height: 1.7; opacity: 0.72;
+}
+.foot-link { color: inherit; text-underline-offset: 3px; }
+
+/* ---------- card ---------- */
+.card {
+  position: relative; background: var(--paper);
+  border: 1px solid var(--hairline); border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(20,22,26,0.12), 0 8px 24px rgba(20,22,26,0.10);
+  overflow: hidden;
+  margin: 10px 0 18px;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+.card.leaving { opacity: 0; transform: translateY(8px); }
+.card .band {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 16px; color: var(--paper);
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+}
+.card .band .card-id { font-family: var(--mono); font-weight: 400; letter-spacing: 0.06em; }
+.card[data-cat="evals"] .band { background: var(--evals); }
+.card[data-cat="compute"] .band { background: var(--compute); }
+.card[data-cat="posttrain"] .band { background: var(--posttrain); }
+.card[data-cat="governance"] .band { background: var(--governance); }
+.card[data-cat="breakout"] .band { background: var(--breakout); }
+.card .speaker {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 12px 18px 10px; border-bottom: 1px solid var(--hairline);
+}
+.dilemma-zone { position: relative; padding: 22px 18px 24px; min-height: 105px; }
+.dilemma-zone .catmark { position: absolute; left: 16px; bottom: 10px; opacity: 0.08; pointer-events: none; }
+.telemetry { float: right; margin: 0 0 10px 14px; opacity: 0.55; }
+.dilemma { font-family: var(--serif); font-size: 19px; line-height: 1.5; margin: 0; }
+.rule { border: none; border-top: 1px solid var(--hairline); margin: 0; }
+.rule.heavy { border-top-width: 2px; }
+.choice {
+  display: block; width: 100%; text-align: left; background: none; border: none;
+  padding: 14px 18px 12px; cursor: pointer; color: inherit;
+}
+.choice:hover { background: rgba(20,22,26,0.035); }
+.choice .c-label { font-size: 14.5px; font-weight: 500; line-height: 1.4; display: block; margin-bottom: 9px; }
+.choice .c-key { font-family: var(--mono); font-size: 10px; opacity: 0.55; margin-right: 6px; }
+.deltas { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--tint); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+.choice:last-child .deltas { border-bottom: none; }
+.delta { text-align: center; padding: 6px 4px; }
+.delta + .delta { border-left: 1px solid var(--hairline); }
+.delta .d-letter { display: block; font-size: 9.5px; letter-spacing: 0.12em; opacity: 0.65; font-family: var(--mono); }
+.delta .d-val { display: block; font-family: var(--mono); font-size: 15px; font-variant-numeric: tabular-nums; }
+.card .footer {
+  display: flex; justify-content: space-between; padding: 8px 18px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; opacity: 0.75;
+}
+/* inverted breakout */
+.card[data-cat="breakout"] { background: var(--ink); color: var(--paper); }
+.card[data-cat="breakout"] .speaker { border-bottom-color: rgba(244,241,234,0.3); }
+.card[data-cat="breakout"] .rule { border-top-color: rgba(244,241,234,0.3); }
+.card[data-cat="breakout"] .choice:hover { background: rgba(244,241,234,0.07); }
+.card[data-cat="breakout"] .deltas { background: rgba(244,241,234,0.08); border-color: rgba(244,241,234,0.3); }
+.card[data-cat="breakout"] .delta + .delta { border-left-color: rgba(244,241,234,0.3); }
+.card[data-cat="breakout"] { box-shadow: inset 0 1px 0 rgba(244,241,234,0.15), 0 1px 2px rgba(20,22,26,0.2), 0 8px 24px rgba(20,22,26,0.18); }
+
+/* ---------- verdict ---------- */
+.verdict-wrap { margin: auto 0; padding: 16px 4px; }
+.stamp {
+  display: inline-block; border: 2px solid var(--breakout); color: var(--breakout);
+  opacity: 0.6; transform: rotate(-4deg); border-radius: 4px;
+  font-weight: 700; letter-spacing: 0.1em; font-size: 20px; padding: 6px 14px; margin-bottom: 12px;
+}
+.verdict-name { font-family: var(--serif); font-size: 34px; margin: 0 0 8px; }
+.verdict-text { font-size: 15px; line-height: 1.55; max-width: 44ch; }
+.verdict-meta { font-family: var(--mono); font-size: 12px; margin: 14px 0; line-height: 1.8; }
+.share-row { display: flex; gap: 8px; margin-top: 12px; }
+.share-row input {
+  flex: 1; font-family: var(--mono); font-size: 12px; padding: 8px;
+  background: var(--tint); border: 1px solid var(--hairline); border-radius: 4px; color: var(--ink);
+  min-width: 0;
+}
+.share-hint { font-size: 12px; opacity: 0.7; margin-top: 6px; }
+
+/* ---------- rules / manual modal ---------- */
+.rules-overlay {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(20, 22, 26, 0.72);
+  padding: 16px; box-sizing: border-box;
+}
+.rules-dialog {
+  background: var(--paper); color: var(--ink);
+  border: 1px solid var(--hairline); border-radius: 8px;
+  max-width: 460px; width: 100%; max-height: 90vh;
+  overflow-y: auto; box-sizing: border-box;
+  box-shadow: 0 16px 40px rgba(20, 22, 26, 0.35);
+}
+.rules-band {
+  background: var(--ink); color: var(--paper);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 14px; font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+}
+.rules-code { font-weight: 400; opacity: 0.8; }
+.rules-body { padding: 16px 18px 20px; }
+.rules-title { font-family: var(--serif); font-size: 22px; line-height: 1.25; margin: 0 0 10px; }
+.rules-p { font-size: 13.5px; line-height: 1.5; margin: 0 0 10px; }
+.rules-h3 {
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.08em; margin: 14px 0 6px; padding-bottom: 3px;
+  border-bottom: 1px solid var(--hairline);
+}
+.rules-list { margin: 0 0 12px 18px; padding: 0; font-size: 13px; line-height: 1.55; }
+.rules-list li { margin-bottom: 5px; }
+.rules-btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+
+/* short viewports: keep card + both choices visible at 375x667 */
+@media (max-height: 700px) {
+  .card { margin: 4px 0 8px; }
+  .card .band { padding: 5px 12px; }
+  .card .speaker { padding: 6px 12px; }
+  .meter .m-bar { height: 44px; margin: 3px auto; }
+  .meters { margin: 2px 0 4px; gap: 6px; }
+  .dilemma { font-size: 16px; line-height: 1.38; }
+  .dilemma-zone { padding: 8px 12px; min-height: unset; }
+  .choice { padding: 7px 12px 6px; }
+  .choice .c-label { font-size: 13px; margin-bottom: 4px; }
+  .delta { padding: 3px 2px; }
+  .card .footer { padding: 4px 12px; }
+  .telemetry { width: 72px; height: 72px; margin: 0 0 4px 8px; }
+  #app { padding: 8px 10px 16px; }
+  /* page footer stays out of the card zone on small screens */
+  .game-footer { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+  .meter .m-fill { transition: none; }
+  * { animation: none !important; }
+}
